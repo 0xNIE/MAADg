@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tower Builder</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+    </style>
+
+    <!-- Import maps for Three.js -->
+    <script type="importmap">
+        { "imports": { "three": "./three.js/build/three.module.js", "three/addons/": "./three.js/examples/jsm/", "three/exporters/": "./three.js/examples/jsm/exporters/" } }
+    </script>
+
+    <!-- Load Cannon.js globally -->
+    <script src="cannon.js/build/cannon.min.js"></script>
+</head>
+
+<body>
+    <script type="module" src="js/main.js"></script>
+    <button id="exportButton" style="
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+">Export OBJ</button>
+</body>
+
+</html>
