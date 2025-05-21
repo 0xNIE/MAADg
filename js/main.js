@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { OBJExporter } from 'three/exporters/OBJExporter.js';
+import * as CANNON from 'cannon-es';
+
 
 
 let scene, camera, renderer, world;
