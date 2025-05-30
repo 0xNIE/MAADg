@@ -170,6 +170,25 @@ function dropBlock() {
     document.getElementById("score").innerText = `Score: ${score}`;
 }
 
+function resetGame() {
+    // Remove all blocks and bodies
+    for (let i = 0; i < blocks.length; i++) {
+        scene.remove(blocks[i]);
+        world.removeBody(bodies[i]);
+    }
+    blocks = [];
+    bodies = [];
+
+    // Reset height and score
+    currentY = 1.5;
+    score = 0;
+    document.getElementById("score").innerText = `Score: ${score}`;
+
+    // Reset preview cube
+    targetDropPosition.set(0, currentY, 0);
+    previewCube.position.copy(targetDropPosition);
+}
+
 function animate() {
     requestAnimationFrame(animate);
     world.step(1 / 60);
@@ -177,6 +196,12 @@ function animate() {
     for (let i = 0; i < blocks.length; i++) {
         blocks[i].position.copy(bodies[i].position);
         blocks[i].quaternion.copy(bodies[i].quaternion);
+
+        // Check if any block has fallen too low
+        if (bodies[i].position.y < -20) {
+            resetGame();
+            break;
+        }
     }
 
     renderer.render(scene, camera);
